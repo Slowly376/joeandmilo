@@ -15,16 +15,16 @@
       }
       
       h1 {
-        font-size: 80px; /* Größe erhöht */
+        font-size: 80px;
         margin-bottom: 20px;
         font-family: "Arial", sans-serif;
-        color: #fff; /* Schriftfarbe auf Weiß geändert */
+        color: #fff;
       }
       
       .small-text {
         font-size: 20px;
         margin-top: 10px;
-        color: #fff; /* Schriftfarbe auf Weiß geändert */
+        color: #fff;
       }
       
       /* Hamburger-Menü-Stile */
@@ -108,6 +108,13 @@
         object-fit: cover;
         z-index: -1;
       }
+      
+      /* Medienabfragen für Responsive Webdesign */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 48px; /* Schriftgröße für Handys verringert */
+        }
+      }
     </style>
   </head>
   <body>
@@ -137,10 +144,12 @@
     <script>
       const menuIcon = document.getElementById("menuIcon");
       const dropdownMenu = document.getElementById("dropdownMenu");
+      const videoBackground = document.getElementById("video-background");
       
       menuIcon.addEventListener("click", function() {
         this.classList.toggle("open");
         dropdownMenu.classList.toggle("open");
+        videoBackground.classList.toggle("open");
       });
       
       const dateLinks = document.querySelectorAll("#dropdownMenu a");
@@ -154,4 +163,4 @@
       });
     </script>
   </body>
-</html
+</html>
