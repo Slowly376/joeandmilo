@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <title>My Webite</title>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
@@ -11,30 +11,147 @@
         align-items: center;
         height: 100vh;
         text-align: center;
-        background: url("background-image.jpg") center/cover no-repeat; /* Hier das Hintergrundbild anpassen */
-        background-size: auto 100%; /* Hintergrundbild im Hochformat darstellen */
+        position: relative;
       }
       
       h1 {
-        font-size: 60px; /* Hier die Schriftgröße des Haupttextes anpassen */
-        margin-bottom: 20px; /* Unteren Abstand zum kleineren Text anpassen */
-        font-family: "Arial", sans-serif; /* Hier die gewünschte Schriftart für den Haupttext angeben */
+        font-size: 80px; /* Größe erhöht */
+        margin-bottom: 20px;
+        font-family: "Arial", sans-serif;
+        color: #fff; /* Schriftfarbe auf Weiß geändert */
       }
       
       .small-text {
-        font-size: 20px; /* Hier die Schriftgröße des kleineren Textes anpassen */
-        margin-top: 10px; /* Oberen Abstand zum Haupttext anpassen */
+        font-size: 20px;
+        margin-top: 10px;
+        color: #fff; /* Schriftfarbe auf Weiß geändert */
+      }
+      
+      /* Hamburger-Menü-Stile */
+      .menu-icon {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 25px;
+        cursor: pointer;
+        z-index: 100;
+      }
+      
+      .menu-icon .bar {
+        width: 100%;
+        height: 3px;
+        background-color: #000;
+        transition: transform 0.3s ease;
+      }
+      
+      .menu-icon.open .bar:first-child {
+        transform: translateY(8px) rotate(45deg);
+      }
+      
+      .menu-icon.open .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .menu-icon.open .bar:last-child {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+      
+      /* Dropdown-Menü-Stile */
+      .dropdown-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 99;
+      }
+      
+      .dropdown-menu.open {
+        display: flex;
+      }
+      
+      .dropdown-menu ul {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .dropdown-menu ul li {
+        margin-bottom: 10px;
+      }
+      
+      .dropdown-menu ul li a {
+        color: #fff;
+        font-size: 20px;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+      }
+      
+      .dropdown-menu ul li a:hover {
+        opacity: 0.7;
+      }
+      
+      /* Video-Stile */
+      #video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
       }
     </style>
   </head>
   <body>
     <main>
+      <video id="video-background" autoplay loop muted>
+        <source src="video-background.mp4" type="video/mp4">
+      </video>
       <div>
         <h1>Emilio + Joelina</h1>
       </div>
       <div class="small-text">
         11. Mai 2022
       </div>
+      <div class="menu-icon" id="menuIcon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <ul>
+          <li><a href="datum1.html">Datum 1</a></li>
+          <li><a href="datum2.html">Datum 2</a></li>
+          <li><a href="datum3.html">Datum 3</a></li>
+        </ul>
+      </div>
     </main>
+    <script>
+      const menuIcon = document.getElementById("menuIcon");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      
+      menuIcon.addEventListener("click", function() {
+        this.classList.toggle("open");
+        dropdownMenu.classList.toggle("open");
+      });
+      
+      const dateLinks = document.querySelectorAll("#dropdownMenu a");
+      
+      dateLinks.forEach(function(link) {
+        link.addEventListener("click", function(event) {
+          event.preventDefault();
+          const target = event.target.getAttribute("href");
+          window.location.href = target;
+        });
+      });
+    </script>
   </body>
 </html>
