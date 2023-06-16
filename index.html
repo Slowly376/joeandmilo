@@ -12,6 +12,7 @@
         height: 100vh;
         text-align: center;
         position: relative;
+        overflow: hidden; /* Scrollen deaktiviert */
       }
       
       h1 {
@@ -115,6 +116,14 @@
           font-size: 48px; /* Schriftgröße für Handys verringert */
         }
       }
+      
+      /* Zusätzlicher Text */
+      .copyright {
+        position: absolute;
+        bottom: 10px;
+        font-size: 12px;
+        color: #fff;
+      }
     </style>
   </head>
   <body>
@@ -139,6 +148,9 @@
           <li><a href="datum2.html">Datum 2</a></li>
           <li><a href="datum3.html">Datum 3</a></li>
         </ul>
+      </div>
+      <div class="copyright">
+        © 2023 - Alle Rechte vorbehalten
       </div>
     </main>
     <script>
